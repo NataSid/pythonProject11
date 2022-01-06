@@ -1,0 +1,50 @@
+1. python manage.py shell
+2. from news.models import*
+3. U1= User.objects.create_user(username = 'Nata')
+4. U2 = User.objects.create_user(username= 'Igor')
+5. Author.objects.create(authorUser=U1)
+6. Author.objects.create(authorUser=U2)
+7. Category.objects.create(name='IT')
+8. Category.objects.create(name='Movie')
+9. Category.objects.create(name='Animals')
+10. Category.objects.create(name='Weather')
+11. Post.objects.create(author=author, CategoriyaTape='NW', title='Снегопад',text = 'много снега пора на лыжи')
+12. Post.objects.create(author=author, CategoriyaTape='ST', title='Кошки',text = 'кошки интересные животные')
+13. Post.objects.create(author=author, CategoriyaTape='ST', title='Факты о солнышке ',text = 'витамин D полезен')
+14. Post.objects.get(id=1).PostCategory.add(Category.objects.get(id=3))
+15. Post.objects.get(id=1).PostCategory.add(Category.objects.get(id=4))
+16. Post.objects.get(id=2).PostCategory.add(Category.objects.get(id=3))
+17. Post.objects.get(id=3).PostCategory.add(Category.objects.get(id=4))
+18. Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=Author.objects.get(id=1).authorUser, text='пробный первый комментарий')
+19. Comment.objects.create(commentPost=Post.objects.get(id=2), commentUser=Author.objects.get(id=2).authorUser, text='Что то уже понятнее')
+20. Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=Author.objects.get(id=1).authorUser, text='А витамин все таки полезен')
+21. Comment.objects.get(id=1).like()
+22. Comment.objects.get(id=2).like()
+23. Comment.objects.get(id=3).like()
+24. Comment.objects.get(id=3).dislike()
+25. Post.objects.get(id=1).like()
+26. Post.objects.get(id=2).like()
+27. Post.objects.get(id=2).like()
+28. Post.objects.get(id=3).like()
+29. Post.objects.get(id=3).like()
+30. Post.objects.get(id=3).like()
+31. Post.objects.get(id=3).like()
+32. Post.objects.get(id=3).dislike()
+33. Author.objects.get(id=1)
+34. a= Author.objects.get(id=1)
+35. a.update_rating()
+36. a.ratingAuthor
+37. Author.objects.order_by('-ratingAuthor')[:1]
+38. c=Author.objects.order_by('-ratingAuthor')[:1]
+39. for i in c:
+...     i.ratingAuthor
+...     i.authorUser
+40. Post.objects.order_by('-rating')
+41. n=Post.objects.order_by('-rating')
+42. for i in n:
+...     i.Datecreate
+...     i.author.authorUser
+...     i.rating
+...     i.title
+...     i.preview()
+43. Post.objects.all().order_by('-rating')[0].comment_set.values('datesozdaniya','commentUser','text','rating')
